@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up and Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20vh;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .signup,
+    .login {
+      margin-bottom: 20px;
+      margin-right: 20px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff545a;
+      color: #0e0d0d;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    #button:hover {
+      background-color: #868080;
+    }
+
+    #login-btn {
+      background-color: #dd4b39;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #login-btn:hover {
+      background-color: #c23321;
+    }
+
+    footer {
+      background-color: #868080;
+    }
+
+    .btn-0 {
+      background-color: #bebcbc;
+      border-radius: 5px;
+    }
+
+    .btn-0:hover {
+      background-color: #ff545a;
+    }
+
+    .btn-1 {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff545a;
+      color: #0e0d0d;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .btn-1:hover {
+      background-color: #ff545a;
+    }
+
+    /* Add this CSS for background video */
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="video-container">
+    <video autoplay loop muted>
+      <source src="/images/clips/35344-405897623.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="container">
+    <div class="signup">
+      <h2 style="color: #ff545a;">Register</h2>
+      <form id="form">
+        <input type="text" placeholder="Username" name="from_name" id="from_name">
+        <input type="email" placeholder="Email" name="name" id="name">
+        <input type="password" placeholder="Password" name="password" id="password">
+        <input type="password" placeholder="re-enter password" id="enter">
+        <input type="text" placeholder="Country" id="country">
+        <input type="text" placeholder="Phone" name="phone" id="phone" maxlength="13">
+        <input type="submit" id="button" value="continue" >
+      </form>
+    </div>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/app.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+      emailjs.init('XcvcHIHG6TbDI8-L_')
+    </script>
+    <script src="js/email.js"></script>
+</body>
+
+</html>

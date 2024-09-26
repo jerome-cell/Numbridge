@@ -1,0 +1,683 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+	<!-- meta data -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<!--font-family-->
+	<link
+		href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+		rel="stylesheet">
+
+	<!-- title of site -->
+	<title>Numbridge</title>
+
+	<!-- For favicon png -->
+	<link rel="shortcut icon" type="image/icon" href="/logo/favicon.png" />
+
+	<!--font-awesome.min.css-->
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+	<!--linear icon css-->
+	<link rel="stylesheet" href="/css/linearicons.css">
+
+	<!--animate.css-->
+	<link rel="stylesheet" href="/css/animate.css">
+
+	<!--flaticon.css-->
+	<link rel="stylesheet" href="/css/flaticon.css">
+
+	<!--slick.css-->
+	<link rel="stylesheet" href="/css/slick.css">
+	<link rel="stylesheet" href="/css/slick-theme.css">
+
+	<!--bootstrap.min.css-->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+	<!-- bootsnav -->
+	<link rel="stylesheet" href="/css/bootsnav.css">
+
+	<!--style.css-->
+	<link rel="stylesheet" href="/css/style.css">
+
+	<!--responsive.css-->
+	<link rel="stylesheet" href="/css/responsive.css">
+
+</head>
+
+<body>
+
+
+	<!-- top-area Start -->
+	<section class="top-area">
+		<div class="header-area">
+			<!-- Start Navigation -->
+			<nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70"
+				data-minus-value-mobile="55" data-speed="1000">
+
+				<div class="container">
+
+					<!-- Start Header Navigation -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+							<i class="fa fa-bars"></i>
+						</button>
+						<a class="navbar-brand" href="index.html">Num<span>bridge</span></a>
+
+					</div><!--/.navbar-header-->
+					<!-- End Header Navigation -->
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+						<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+							<li class=" scroll active"><a href="#home">home</a></li>
+							<li class="scroll"><a href="#works">how it works</a></li>
+							<li class="scroll"><a href="#reviews">review</a></li>
+							<li class="scroll"><a href="#blog">blog</a></li>
+							<li class="scroll"><a href="#contact">contact</a></li>
+						</ul><!--/.nav -->
+					</div><!-- /.navbar-collapse -->
+				</div><!--/.container-->
+			</nav><!--/nav-->
+			<!-- End Navigation -->
+		</div><!--/.header-area-->
+		<div class="clearfix"></div>
+
+	</section><!-- /.top-area-->
+	<!-- top-area End -->
+
+	<!--welcome-hero start -->
+	<section id="home" class="welcome-hero">
+		<div class="container">
+			<div class="welcome-hero-txt">
+				<h2>Best place to find and explore <br> the world as it is</h2>
+			</div>
+			<div class="welcome-hero-form">
+				<div class="single-welcome-hero-form">
+					<form id="search-form" action="javascript:void(0)">
+						<div class="input-group">
+							<input type="text" id="search-input" placeholder="Ex: TikTok acc, IG acc, phone numbers"
+								autocomplete="off" />
+							<button class="welcome-hero-btn" id="search-btn">
+								<i data-feather="search"></i>
+							</button>
+						</div>
+						<div id="search-suggestions" class="search-suggestions"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<style>
+		.welcome-hero-form {
+			position: relative;
+		}
+
+		.input-group {
+			display: flex;
+			align-items: center;
+			border: 1px solid #ccc;
+			border-radius: 30px;
+			padding: 10px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.input-group input {
+			width: 85%;
+			padding: 10px;
+			border: none;
+			font-size: 16px;
+		}
+
+		.input-group button {
+			width: 15%;
+			padding: 10px;
+			border: none;
+			background-color: #fff;
+			cursor: pointer;
+		}
+
+		.search-suggestions {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			width: 100%;
+			display: none;
+		}
+
+		.search-suggestions ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.search-suggestions li {
+			padding: 10px;
+			border-bottom: 1px solid #ccc;
+			cursor: pointer;
+		}
+
+		.search-suggestions li:hover {
+			background-color: #f0f0f0;
+		}
+	</style>
+	<script>
+
+		const searchForm = document.getElementById('search-form');
+		const searchInput = document.getElementById('search-input');
+		const searchBtn = document.getElementById('search-btn');
+
+		searchBtn.addEventListener('click', () => {
+			const searchTerm = searchInput.value.trim().toLowerCase();
+
+			// Redirect to corresponding div based on search term
+			if (searchTerm === 'how it works' || searchTerm === 'works') {
+				document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
+			} else if (searchTerm === 'review' || searchTerm === 'reviews') {
+				document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });
+			} else if (searchTerm === 'blog') {
+				document.getElementById('blog').scrollIntoView({ behavior: 'smooth' });
+			} else if (searchTerm === 'contact') {
+				document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+			} else if (searchTerm === 'tiktok') {
+				document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
+			} else if (searchTerm === 'instagram') {
+				document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
+			} else if (searchTerm === 'foriegn number') {
+				document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
+			} else {
+				alert('No matching results found.');
+			}
+		});
+
+	</script>
+
+
+	</section><!--/.welcome-hero-->
+	<br>
+	<br>
+	<br>
+
+	</section><!--/.list-topics-->
+	<!--list-topics end-->
+
+	<!--works start -->
+	<section id="works" class="works">
+		<div class="container">
+			<div class="section-header">
+				<h2>how it works</h2>
+				<p>Learn More about how our website works</p>
+			</div><!--/.section-header-->
+			<div class="works-content">
+				<div class="row">
+					<div class="col-md-4 col-sm-6">
+						<div class="single-how-works">
+							<div class="single-how-works-icon">
+								<i class="fa fa-whatsapp"></i>
+							</div>
+							<h2><a href="register.html">Foreign Numbers</a></h2>
+							<p>
+								Unlock Global Connectivity
+
+								Get local phone numbers from over 100 countries, instantly!
+
+								Receive calls and texts globally, seamlessly
+								Perfect for businesses, travelers, and others
+								Enhance your international presence
+								Flexible plans starting at [₦5500-₦7000]
+
+
+							</p>
+							<button class="welcome-hero-btn how-work-btn"
+								onclick="window.location.href='register.html'">
+								Get Yours
+							</button>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6">
+						<div class="single-how-works">
+							<div class="single-how-works-icon">
+								<i class="flaticon-networking"></i>
+							</div>
+							<h2><a href="#">TikTok Account Logins</a></h2>
+							<p>
+								Boost Your Online Fame
+
+								Verified and active TikTok accounts for sale!
+
+								Instantly increase your online presence
+								Choose from popular niches (music, dance, beauty, gaming, etc.)
+								Grow your audience and engagement
+								Affordable accounts from [₦3500-₦5000]
+
+
+							</p>
+							<button class="welcome-hero-btn how-work-btn"
+								onclick="window.location.href='nil.html'">
+								Get Yours
+							</button>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6">
+						<div class="single-how-works">
+							<div class="single-how-works-icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<h2><a href="#">Twitter Accounts</a></h2>
+							<p>
+								Elevate Your Influence
+
+								High-quality, aged Twitter accounts for sale!
+
+								Establish credibility and trust
+								Increase followers and engagement
+								Various niches and follower counts available
+								Premium accounts from [₦7000-₦15000]
+
+
+							</p>
+							<button class="welcome-hero-btn how-work-btn"
+								onclick="window.location.href='nil.html'">
+								Get Yours
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/.container-->
+
+	</section><!--/.works-->
+	<!--works end -->
+
+
+	<!--reviews start -->
+	<section id="reviews" class="reviews">
+		<div class="section-header">
+			<h2>clients reviews</h2>
+			<p>What our client say about us</p>
+		</div><!--/.section-header-->
+		<div class="reviews-content">
+			<div class="testimonial-carousel">
+				<div class="single-testimonial-box">
+					<div class="testimonial-description">
+						<div class="testimonial-info">
+							<div class="testimonial-img">
+								<img src="/images/blog/pps-1.jpeg" alt="clients">
+							</div><!--/.testimonial-img-->
+							<div class="testimonial-person">
+								<h2>John Stephen</h2>
+								<h4>london, UK</h4>
+								<div class="testimonial-person-star">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+							</div><!--/.testimonial-person-->
+						</div><!--/.testimonial-info-->
+						<div class="testimonial-comment">
+							<p>
+								I used your foreign numbers to expand my business globally and even opened WhatsApp
+								accounts for seamless customer communication. Game-changer!" - John stephen., Entrepreneur
+
+							</p>
+						</div><!--/.testimonial-comment-->
+					</div><!--/.testimonial-description-->
+				</div><!--/.single-testimonial-box-->
+				<div class="single-testimonial-box">
+					<div class="testimonial-description">
+						<div class="testimonial-info">
+							<div class="testimonial-img">
+								<img src="/images/blog/pps-2.jpeg" alt="clients">
+							</div><!--/.testimonial-img-->
+							<div class="testimonial-person">
+								<h2>Rachel G.</h2>
+								<h4>london, UK</h4>
+								<div class="testimonial-person-star">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+							</div><!--/.testimonial-person-->
+						</div><!--/.testimonial-info-->
+						<div class="testimonial-comment">
+							<p>
+								"I struggled to grow my TikTok presence, but your account login solved that problem.
+								Thanks!" - Rachel G., Small Business Owner
+
+							</p>
+						</div><!--/.testimonial-comment-->
+					</div><!--/.testimonial-description-->
+				</div><!--/.single-testimonial-box-->
+				<div class="single-testimonial-box">
+					<div class="testimonial-description">
+						<div class="testimonial-info">
+							<div class="testimonial-img">
+								<img src="/images/blog/pps-3.jpeg" alt="clients">
+							</div><!--/.testimonial-img-->
+							<div class="testimonial-person">
+								<h2>Helen Leah</h2>
+								<h4>Carlifornia, USA</h4>
+								<div class="testimonial-person-star">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+							</div><!--/.testimonial-person-->
+						</div><!--/.testimonial-info-->
+						<div class="testimonial-comment">
+							<p>
+								"Your aged Instagram accounts are top-notch! My engagement increased significantly after
+								switching." - Helen Leah., E-commerce Owner
+
+							</p>
+						</div><!--/.testimonial-comment-->
+					</div><!--/.testimonial-description-->
+				</div><!--/.single-testimonial-box-->
+				<div class="single-testimonial-box">
+					<div class="testimonial-description">
+						<div class="testimonial-info">
+							<div class="testimonial-img">
+								<img src="/images/blog/pps-4.jpeg" alt="clients">
+							</div><!--/.testimonial-img-->
+							<div class="testimonial-person">
+								<h2>Archraf Saliso.</h2>
+								<h4>Dubai, UAE</h4>
+								<div class="testimonial-person-star">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+							</div><!--/.testimonial-person-->
+						</div><!--/.testimonial-info-->
+						<div class="testimonial-comment">
+							<p>
+								"I bought a UK number from you and opened a WhatsApp account. Now, my international
+								clients can reach me locally! Business has never been better." - Archraf Saliso.,
+								Dubai-based Exporter
+
+							</p>
+						</div><!--/.testimonial-comment-->
+					</div><!--/.testimonial-description-->
+				</div><!--/.single-testimonial-box-->
+				<div class="single-testimonial-box">
+					<div class="testimonial-description">
+						<div class="testimonial-info">
+							<div class="testimonial-img">
+								<img src="/images/blog/pps-5.jpeg" alt="clients">
+							</div><!--/.testimonial-img-->
+							<div class="testimonial-person">
+								<h2>Sandra W.</h2>
+								<h4>New York, USA</h4>
+								<div class="testimonial-person-star">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+							</div><!--/.testimonial-person-->
+						</div><!--/.testimonial-info-->
+						<div class="testimonial-comment">
+							<p>
+								"Your foreign numbers helped me verify my WhatsApp Business account, increasing sales by
+								30%! Thank you." - Sandra Woods., Abuja-based Entrepreneur
+
+							</p>
+						</div><!--/.testimonial-comment-->
+					</div><!--/.testimonial-description-->
+				</div><!--/.single-testimonial-box-->
+			</div>
+		</div>
+
+	</section><!--/.reviews-->
+	<!--reviews end -->
+
+	<!-- statistics strat -->
+	<section id="statistics" class="statistics">
+		<div class="container">
+			<div class="statistics-counter">
+				<div class="col-md-3 col-sm-6">
+					<div class="single-ststistics-box">
+						<div class="statistics-content">
+							<div class="counter">90 </div> <span>K+</span>
+						</div><!--/.statistics-content-->
+						<h3>listings</h3>
+					</div><!--/.single-ststistics-box-->
+				</div><!--/.col-->
+				<div class="col-md-3 col-sm-6">
+					<div class="single-ststistics-box">
+						<div class="statistics-content">
+							<div class="counter">40</div> <span>k+</span>
+						</div><!--/.statistics-content-->
+						<h3>listing categories</h3>
+					</div><!--/.single-ststistics-box-->
+				</div><!--/.col-->
+				<div class="col-md-3 col-sm-6">
+					<div class="single-ststistics-box">
+						<div class="statistics-content">
+							<div class="counter">65</div> <span>k+</span>
+						</div><!--/.statistics-content-->
+						<h3>visitors</h3>
+					</div><!--/.single-ststistics-box-->
+				</div><!--/.col-->
+				<div class="col-md-3 col-sm-6">
+					<div class="single-ststistics-box">
+						<div class="statistics-content">
+							<div class="counter">50</div> <span>k+</span>
+						</div><!--/.statistics-content-->
+						<h3>happy clients</h3>
+					</div><!--/.single-ststistics-box-->
+				</div><!--/.col-->
+			</div><!--/.statistics-counter-->
+		</div><!--/.container-->
+
+	</section><!--/.counter-->
+	<!-- statistics end -->
+
+	<!--blog start -->
+	<section id="blog" class="blog">
+		<div class="container">
+			<div class="section-header">
+				<h2>news and articles</h2>
+				<p>Always be up to date with our latest News and Articles </p>
+			</div><!--/.section-header-->
+			<div class="blog-content">
+				<div class="row">
+					<div class="col-md-4 col-sm-6">
+						<div class="single-blog-item">
+							<div class="single-blog-item-img">
+								<img src="/images/blog/img-0.jpeg" alt="blog image">
+							</div>
+							<div class="single-blog-item-txt">
+								<h2><a href="https://www.legit.ng/politics/1615663-edo-election-update-2027-secondus-explains/">Security
+										Tips: Protecting Your Foreign Number from Scams and Fraud</a>
+								</h2>
+								<h4>posted <span>by</span> <a href="#">admin</a> January 2023</h4>
+								<p>
+									As a user of foreign numbers, you're exposed to various security risks that can
+									compromise your identity, finances, and business. Scammers target foreign numbers to
+									exploit vulnerabilities, making it crucial to stay vigilant.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6">
+						<div class="single-blog-item">
+							<div class="single-blog-item-img">
+								<img src="/images/blog/img-5.jpeg" alt="blog image">
+							</div>
+							<div class="single-blog-item-txt">
+								<h2>
+									<a href="https://www.legit.ng/nigeria/1615560-breaking-injuries-explosion-rocks-abuja-details-emerge/">
+										TikTok Marketing Strategies for Nigerian Businesses
+									</a>
+								</h2>
+								<h4>
+									posted
+									<span>by</span>
+									<a href="#">admin</a>
+									March 2023
+								</h4>
+								<p>
+									TikTok has taken the world by storm, with over 1 billion active users worldwide.
+									Nigerian businesses can leverage TikTok's vast audience to increase brand awareness,
+									drive sales, and grow their online presence.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6">
+						<div class="single-blog-item">
+							<div class="single-blog-item-img">
+								<img src="/images/blog/63298810889a145a076042e7_link-in-bio-collage.png"
+									alt="blog image">
+							</div>
+							<div class="single-blog-item-txt">
+								<h2><a href="https://www.legit.ng/politics/1615637-edo-election-update-deputy-dg-pdps-ighodalos-campaign-cries-tv-interview-video-trends/">Influencer
+										Marketing On TikTok </a></h2>
+								<h4>posted <span>by</span> <a href="#">admin</a> August 2024</h4>
+								<p>
+									Unlock TikTok's Influencer Power! Partner with popular TikTok creators to reach 1
+									billion+ active users, increase brand awareness, drive sales, and tap into niche
+									audiences.To measure success, track engagement metrics, and many others.
+
+
+
+
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/.container-->
+
+	</section><!--/.blog-->
+	<!--blog end -->
+
+	<!--subscription strat -->
+	<section id="contact" class="subscription">
+		<div class="container">
+			<div class="subscribe-title text-center">
+				<h2>
+					MESSAGE US
+				</h2>
+				<p>
+					Numbridge offers all social media logins to enable boost your social media presence
+				</p>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="subscription-input-group">
+						<form action="#">
+							<textarea class="subscription-input-form" placeholder="message us"></textarea>
+							<button class="appsLand-btn subscribe-btn"
+								onclick="window.location.href='mailto:kuumbavideoedits@gmail.com'">
+								SEND
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section><!--/subscription-->
+	<!--subscription end -->
+
+	<!--footer start-->
+	<footer id="footer" class="footer">
+		<div class="container">
+			<div class="footer-menu">
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="index.html">num<span>bridge</span></a>
+						</div><!--/.navbar-header-->
+					</div>
+					<div class="col-sm-9">
+						<ul class="footer-menu-item">
+							<li class="scroll"><a href="#works">how it works</a></li>
+							<li class="scroll"><a href="#reviews">review</a></li>
+							<li class="scroll"><a href="#blog">blog</a></li>
+							<li class="scroll"><a href="#contact">contact</a></li>
+							<li class=" scroll"><a href="#contact">my account</a></li>
+						</ul><!--/.nav -->
+					</div>
+				</div>
+			</div>
+			<div class="hm-footer-copyright">
+				<div class="row">
+					<div class="col-sm-5">
+						<p>
+							&copy;copyright. designed and developed by <a href="#"><span style="color: #ff545a;">jay
+									codex</span></a>
+						</p><!--/p-->
+					</div>
+					<div class="col-sm-7">
+						<div class="footer-social">
+							<a href="tel:919330695046"><i class="fa fa-phone"></i></a>
+							<a href="https://www.facebook.com/share/15NaHRU3ui/?mibextid=qi2Omg"><i
+									class="fa fa-facebook"></i></a>
+							<a href="https://x.com/SAMRAT07hacker?t=56Is36vUtkLmiAl2H_iOPQ&s=08"><i
+									class="fa fa-twitter"></i></a>
+							<a href="https://wa.me/919330695046"><i class="fa fa-whatsapp"></i></a>
+						</div>
+					</div>
+				</div>
+
+			</div><!--/.hm-footer-copyright-->
+		</div><!--/.container-->
+
+		<div id="scroll-Top">
+			<div class="return-to-top">
+				<i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title=""
+					data-original-title="Back to Top" aria-hidden="true"></i>
+			</div>
+			<div class="loader" id="loader"></div>
+
+		</div><!--/.scroll-Top-->
+
+	</footer><!--/.footer-->
+	<!--footer end-->
+
+	<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+	<script src="/js/jquery.js"></script>
+
+
+	<!--modernizr.min.js-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+	<!--bootstrap.min.js-->
+	<script src="/js/bootstrap.min.js"></script>
+
+	<!-- bootsnav js -->
+	<script src="/js/bootsnav.js"></script>
+
+	<!--feather.min.js-->
+	<script src="/js/feather.min.js"></script>
+
+	<!-- counter js -->
+	<script src="/js/jquery.counterup.min.js"></script>
+	<script src="/js/waypoints.min.js"></script>
+
+	<!--slick.min.js-->
+	<script src="/js/slick.min.js"></script>
+	<!-- loader section  -->
+	<script src="/js/script.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+	<!--Custom JS-->
+	<script src="/js/custom.js"></script>
+
+	<script src="/js/slide.js"></script>
+
+</body>
+
+</html>

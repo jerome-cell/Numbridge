@@ -1,0 +1,278 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Gateway</title>
+  <style>
+    /* styles */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20vh;
+    }
+    
+    .payment-methods {
+      margin-bottom: 20px;
+      margin-right: 20px;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff545a;
+      color: #0e0d0d;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    
+    button:hover {
+      background-color: #868080;
+    }
+    
+    select {
+      width: 105%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    #login-btn {
+      background-color: #dd4b39;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    #login-btn:hover {
+      background-color: #c23321;
+    }
+    
+    footer {
+      background-color: #868080;
+    }
+    
+    .btn-0 {
+      background-color: #bebcbc;
+      border-radius: 5px;
+    }
+    
+    .btn-0:hover {
+      background-color: #ff545a;
+    }
+    
+    .btn-1 {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff545a;
+      color: #0e0d0d;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    
+    .btn-1:hover {
+      background-color: #ff545a;
+    }
+    
+    .bank-link {
+      text-decoration: none;
+      color: #0e0d0d;
+      margin-bottom: 10px;
+      display: block;
+    }
+    
+    .bank-link:hover {
+      color: #ff545a;
+    }
+    
+    #account-details {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    
+    #copy-btn {
+      cursor: pointer;
+      color: #0e0d0d;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+    
+    #copy-btn:hover {
+      color: #ff545a;
+    }
+    
+    #sent-btn {
+      background-color: #dd4b39;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    
+    #sent-btn:hover {
+      background-color: #c23321;
+    }
+    
+    #countdown {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    
+    #payment-section {
+      display: block;
+    }
+    
+    #payment-section.hidden {
+      display: none;
+    }
+    
+    .upload-section {
+      margin-bottom: 20px;
+    }
+    
+    .upload-section input[type="file"] {
+      display: none;
+    }
+    
+    .upload-section label {
+      background-color: #ff545a;
+      color: #0e0d0d;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .upload-section label:hover {
+      background-color: #868080;
+    }
+
+.upload-section p {
+  font-size: 14px;
+  color: #666;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="payment-methods">
+  <p style="color: #ff545a;">Payment Information</p>
+  <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: black; text-align: center;">Send Payment</h1>
+  <div id="account-details">
+    <p><strong>Bank Name:</strong> <span id="bank-name">OPay Digital Services</span></p>
+    <p><strong>Account Number:</strong> <span id="account-number">9124953467</span> <a id="copy-btn" onclick="copyAccountNumber()"><img src="/images/blog/copy.jpg"></a></p>
+    <p><strong>Account Holder's Name:</strong> <span id="account-holder">Igwike Paschalina Mmesomachukwu</span></p>
+    <p><strong>Amount:</strong> <span style="color: darkgreen;">₦5,500</span></p>
+  </div>
+  <div class="upload-section">
+    <input type="file" id="payment-proof" accept="image/*" onchange="uploadImage(this)">
+    <p>Upload a screenshot or photo of your payment receipt</p>
+    <img id="uploaded-image" class="uploaded-image">
+    <label for="payment-proof">Upload Payment Proof</label>
+  </div>
+  <button id="sent-btn" onclick="sendPayment()">I've Sent It</button>
+  <p id="countdown">Payment expires in: 10:00 minutes</p>
+  <p id="payment-status"></p>
+</div>
+</div>
+
+<script>
+let countdownTime = 600; // 10 minutes in seconds
+let countdownInterval;
+let paymentSection = document.getElementById('payment-section');
+let uploadedImage = document.getElementById('uploaded-image');
+
+function startCountdown() {
+  countdownInterval = setInterval(() => {
+    countdownTime--;
+    document.getElementById('countdown').innerText = `Payment expires in: ${formatTime(countdownTime)}`;
+    if (countdownTime <= 0) {
+      clearInterval(countdownInterval);
+      paymentExpired();
+    }
+  }, 1000);
+}
+
+function formatTime(seconds) {
+  let minutes = Math.floor(seconds / 60);
+  let secondsRemaining = seconds % 60;
+  return `${minutes}:${secondsRemaining.toString().padStart(2, '0')}`;
+}
+
+function copyAccountNumber() {
+  const accountNumber = document.getElementById('account-number').textContent;
+  navigator.clipboard.writeText(accountNumber);
+  alert('Account number copied to clipboard!');
+}
+
+function uploadImage(input) {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      uploadedImage.src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function sendPayment() {
+  alert('Payment sent!');
+  window.location.href = 'register-4.html';
+}
+
+function paymentConfirmed() {
+  clearInterval(countdownInterval);
+  paymentSection.classList.add('hidden');
+  document.getElementById('payment-status').innerText = 'Payment confirmed. Thank you!';
+}
+
+function paymentExpired() {
+  paymentSection.classList.add('hidden');
+  document.getElementById('payment-status').innerText = 'Payment expired. Please try again.';
+  window.close();
+}
+
+startCountdown();
+</script>
+</body>
+</html>
